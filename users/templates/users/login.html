@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+
+{% block body %}
+<h1 class="text-2xl m-5">👤Login User</h1>
+<div class="container p-5">
+    <form method="POST" class="bg-grey shadow-md m-10 w-2/5 rounded px-8 pt-6 pb-8 mb-4">
+        {% csrf_token %}
+        <div class="mb-2">
+            <label class="block text-grey-700 text-sm font-bold mb-2" for="">Username</label>
+            <div class="shadow border rounded appearance-none py-2 px-3 mr-10">{{ form.username }}</div>
+        </div>
+        <div class="mb-2">
+            <label class="block text-grey-700 text-sm font-bold mb-2" for="">Password</label>
+            <div class="shadow border rounded appearance-none py-2 px-3 mr-10">{{ form.password }}</div>
+        </div>
+       <div class="flex">
+        <button class="text-white bg-blue-500 px-5  my-3" type="submit" name="Login" id="">Login</button>
+    </form>
+    <a href="{% url 'Register' %}" class=" px-5 py-2 my-5 ml-35" type="submit" name="Login" id="">dont have an account? Register</a>
+       </div>
+</div>
+
+<p class="px-12 py-4"><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'users/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="h-11 pt-2 shadow-lg">
+        <div class="px-4 mx-auto">
+            <div class="flex justify-between">
+                <div>
+                    <a class="flex" href="{% url 'feed' %}">
+                        <img class="h-8" src="{% static 'users/images/kitty.png' %}" alt="No images">
+                        <span class="font-bold text-lg mx-3">Social Circle</span>
+                    </a>
+                </div>
+                <div>
+                    {% if request.user.is_authenticated %}
+                    <a class="px-4 py-10" href="{% url 'edit' %}">Edit Profile</a>
+                    <a class="px-4 py-10" href="{% url 'postcreate' %}">Create Post</a>
+                    <a class="px-4 py-10" href="{% url 'logout' %}">Logout</a>                 
+                    {% else %}
+                    <a class="px-4 py-10" href="{% url 'login' %}">Login</a>
+                    {% endif %} 
+                    
+                </div>
+            </div>
+        </div>
+    </nav>    
+
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
